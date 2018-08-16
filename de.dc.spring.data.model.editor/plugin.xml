@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="SpdatEditorAdvisorApplication">
+      <!-- @generated spdat -->
+      <application>
+         <run class="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated spdat -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisor$Perspective"
+            id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated spdat -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated spdat -->
+      <key
+            commandId="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated spdat -->
+      <actionSet
+            label="%_UI_SpdatEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="SpdatEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenURICommand"
+               class="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenCommand"
+               class="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.spring.data.model.spdat.presentation.SpdatEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated spdat -->
+      <actionSet
+            label="%_UI_SpdatModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.spring.data.model.spdat.presentation.SpdatActionBarContributorActionSet">
+         <action
+               label="%_UI_SpdatModelWizard_label"
+               class="de.dc.spring.data.model.spdat.presentation.SpdatActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.spring.data.model.spdat.presentation.SpdatActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated spdat -->
+      <editor
+            id="de.dc.spring.data.model.spdat.presentation.SpdatEditorID"
+            name="%_UI_SpdatEditor_label"
+            icon="icons/full/obj16/SpdatModelFile.gif"
+            extensions="spdat"
+            class="de.dc.spring.data.model.spdat.presentation.SpdatEditor"
+            contributorClass="de.dc.spring.data.model.spdat.presentation.SpdatActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
