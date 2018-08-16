@@ -101,5 +101,61 @@
             contributorClass="de.dc.spring.data.model.spdat.presentation.SpdatActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:de.dc.fx.spring.model.editor.popup?before=additions">
+         <command
+               commandId="de.dc.spring.data.model.editor.GenerateSourceHandler"
+               label="Generate Source"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="Window">
+            <command
+                  commandId="org.eclipse.ui.window.preferences"
+                  label="Preferences"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="de.dc.spring.data.model.editor.menu"
+            objectClass="de.dc.spring.data.model.spdat.Data">
+         <action
+               class="de.dc.spring.data.model.command.GenerateSourceAction"
+               enablesFor="1"
+               id="de.dc.spring.data.model.editor.GenerateSource"
+               label="Generate Source"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="de.dc.fx.ui.model.editor.menu"
+            objectClass="de.dc.fx.ui.model.fxui.FXForm">
+         <action
+               class="de.dc.spring.data.model.command.GenerateSourceAction"
+               enablesFor="1"
+               id="de.dc.spring.data.model.editor.GenerateSource"
+               label="Generate Source"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="de.dc.spring.data.model.command.GenerateSourceHandler"
+            id="de.dc.spring.data.model.editor.GenerateSourceHandler"
+            name="Generate Entity Source">
+      </command>
+   </extension>
 
 </plugin>

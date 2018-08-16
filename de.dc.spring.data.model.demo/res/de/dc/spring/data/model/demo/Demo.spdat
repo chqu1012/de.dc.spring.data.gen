@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spdat:SpringProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:spdat="http://www.dc.de/spdat" name="Demo" packagePath="de.dc.spring.data.model">
+  <datas name="Person" path="entity">
+    <properties name="id" type="long"/>
+    <properties name="name" type="String">
+      <column/>
+    </properties>
+    <properties name="vorname" type="String"/>
+  </datas>
+  <repositories name="Person" path="repository" associatedData="//@datas.0"/>
+</spdat:SpringProject>

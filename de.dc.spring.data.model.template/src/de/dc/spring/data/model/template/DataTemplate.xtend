@@ -17,7 +17,7 @@ class DataTemplate implements IGenerator<Data>{
 	@Entity
 	public class «data.name.toFirstUpper»{
 		
-		«FOR property : data.properties»
+		«FOR property : data.properties SEPARATOR '\n'»
 			«IF property.isId»
 			@Id
 			@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +53,6 @@ class DataTemplate implements IGenerator<Data>{
 		if (column===null) {
 			return ""
 		}	
-		return '''columnDefinition="«column.columnDefinition»", insertable=«column.isInsertable», length=«column.length», «column.name»", nullable=«column.nullable», precision=«column.precision», scale=«column.scale», table="«column.name»", unique=«column.isUnique», updatable=«column.isUpdatable»'''
+		return '''columnDefinition="«column.columnDefinition»", insertable=«column.isInsertable», length=«column.length», name="«column.name»", nullable=«column.nullable», precision=«column.precision», scale=«column.scale», table="«column.name»", unique=«column.isUnique», updatable=«column.isUpdatable»'''
 	}
 }
