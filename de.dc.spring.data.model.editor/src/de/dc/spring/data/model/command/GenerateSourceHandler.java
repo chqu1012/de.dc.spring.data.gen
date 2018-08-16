@@ -1,6 +1,8 @@
 package de.dc.spring.data.model.command;
 
 
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -14,14 +16,16 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.ResourceUtil;
 
 import de.dc.spring.data.model.command.generator.DataGenerator;
+import de.dc.spring.data.model.command.generator.RepositoryGenerator;
 import de.dc.spring.data.model.spdat.Data;
+import de.dc.spring.data.model.spdat.Repository;
 
 public class GenerateSourceHandler extends AbstractHandler {
 
-	protected DataGenerator generator = new DataGenerator();
+	protected DataGenerator dataGenerater = new DataGenerator();
+	protected RepositoryGenerator repoGenerator = new RepositoryGenerator();
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -30,22 +34,20 @@ public class GenerateSourceHandler extends AbstractHandler {
 			IStructuredSelection ss = (IStructuredSelection) selectionService.getSelection();
 			IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 			IEditorInput input = activeEditor.getEditorInput();
-			IFile file2 = ResourceUtil.getFile(input);
-			System.out.println(file2);
 			if (input instanceof IFileEditorInput) {
 				IFileEditorInput fileEditorInput = (IFileEditorInput) input;
 				IFile file = fileEditorInput.getFile();
 				IProject project = file.getProject();
-				if (ss.getFirstElement() instanceof Data) {
-					generator.gen((Data) ss.getFirstElement(), project);
+				
+				List<?> selections = ss.toList();
+				for (Object object : selections) {
+					if (object instanceof Data) {
+						dataGenerater.gen((Data) object, project);
+					}else if (object instanceof Repository) {
+						repoGenerator.gen((Repository) object, project);
+					}
+					
 				}
-//				if (ss.getFirstElement() instanceof FXTableView) {
-//					FXTableView view = (FXTableView) ss.getFirstElement();
-//					tableViewGenerator.gen(view, project);
-//				}else if (ss.getFirstElement() instanceof FXForm) {
-//					FXForm form = (FXForm) ss.getFirstElement();
-//					formGenerator.gen(form, project);
-//				}
 				refresh(project);
 			}
 		}

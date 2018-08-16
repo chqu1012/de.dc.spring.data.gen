@@ -128,7 +128,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="de.dc.spring.data.model.editor.menu"
-            objectClass="de.dc.spring.data.model.spdat.Data">
+            objectClass="org.eclipse.emf.ecore.EObject">
          <action
                class="de.dc.spring.data.model.command.GenerateSourceAction"
                enablesFor="1"

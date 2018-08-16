@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 @Entity
-public class Person{
+public class Gruppe{
 	
 	@Column()
 	private long id;
@@ -16,9 +16,9 @@ public class Person{
 	@Column()
 	private String vorname;
 	
-	public Person() {
+	public Gruppe() {
 	}
-	public Person(long id, String name, String vorname) {
+	public Gruppe(long id, String name, String vorname) {
 		this.id = id;
 		this.name = name;
 		this.vorname = vorname;

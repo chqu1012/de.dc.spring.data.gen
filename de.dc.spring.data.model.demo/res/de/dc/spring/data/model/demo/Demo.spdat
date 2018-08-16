@@ -7,5 +7,12 @@
     </properties>
     <properties name="vorname" type="String"/>
   </datas>
+  <datas name="Gruppe" path="entity">
+    <properties name="id" type="long"/>
+    <properties name="name" type="String">
+      <column/>
+    </properties>
+    <properties name="vorname" type="String"/>
+  </datas>
   <repositories name="Person" path="repository" associatedData="//@datas.0"/>
 </spdat:SpringProject>
